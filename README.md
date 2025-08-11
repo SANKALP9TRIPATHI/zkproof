@@ -1,73 +1,99 @@
-# Welcome to your Lovable project
+# 🏦 TrustChain
 
-## Project info
+A decentralized protocol that aggregates **on-chain user behavior** — including transaction history, staking habits, and DeFi interactions — into a **transparent and trustable crypto credit score**.  
+The system is designed to **encourage accountability** and **enable fairer financial decisions** in the decentralized ecosystem.
 
-**URL**: https://lovable.dev/projects/bcfcbf06-9c8e-4404-b75f-3b0e94aa6dd4
+---
 
-## How can I edit this code?
+## 🚀 Overview
 
-There are several ways of editing your application.
+Traditional credit scoring is **opaque, centralized, and prone to privacy risks**.  
+This protocol uses **on-chain verifiable data** to create a **trustless credit scoring system** without exposing sensitive personal data.
 
-**Use Lovable**
+**Key Features:**
+- Transparent **on-chain smart contracts** for score calculation.
+- **ZK (Zero-Knowledge) circuits** for privacy-preserving verification.
+- Decentralized **data indexer** to gather activity across chains.
+- Flexible scoring logic — governance can update weight factors.
+- Can be integrated into **DeFi lending platforms**, DAOs, and decentralized identity systems.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bcfcbf06-9c8e-4404-b75f-3b0e94aa6dd4) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📌 Use Case
 
-**Use your preferred IDE**
+**Example:**  
+- Alice wants to borrow 500 USDC from a DeFi lending platform.  
+- Instead of KYC or centralized credit checks, the platform queries Alice’s **on-chain credit score** from this protocol.  
+- The score is computed based on her:
+  - Wallet transaction volume & frequency
+  - Staking & liquidity provision history
+  - Loan repayment history in DeFi
+- Alice has a high score → gets a lower interest rate.  
+- Bob has low or no score → gets smaller borrow limits or higher interest.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🏗 Architecture
 
-Follow these steps:
+                 ┌────────────────────────────┐
+                 │      User Wallet(s)         │
+                 └──────────────┬──────────────┘
+                                │
+           ┌────────────────────┴────────────────────┐
+           │           Indexer (The Graph)           │
+           │  - Aggregates DeFi transactions         │
+           │  - Normalizes staking & loan data       │
+           └────────────────────┬────────────────────┘
+                                │
+           ┌────────────────────┴────────────────────┐
+           │      Scoring Engine (Python)             │
+           │  - Applies scoring formula               │
+           │  - Generates proof (ZK circuit)          │
+           └────────────────────┬────────────────────┘
+                                │
+           ┌────────────────────┴────────────────────┐
+           │     Smart Contracts (Solidity)           │
+           │  - Store scores & proofs                 │
+           │  - Allow dApps to query securely         │
+           └────────────────────┬────────────────────┘
+                                │
+                 ┌──────────────┴──────────────┐
+                 │      DeFi Applications      │
+                 │  - Lending platforms        │
+                 │  - Governance DAOs          │
+                 │  - Decentralized ID (DID)   │
+                 └─────────────────────────────┘
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🛠 Tech Stack
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### **Smart Contracts**
+- **Solidity** (Hardhat framework)
+- **OpenZeppelin** libraries (Ownable, AccessControl, ERC20/721)
+- **Ethers.js** for interactions
 
-**Edit a file directly in GitHub**
+### **Indexing**
+- **The Graph** for data aggregation
+- Subgraph mappings in TypeScript
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### **Scoring Engine**
+- **Python** for score computation
+- **Pandas / NumPy** for data handling
+- **PyCryptography** for hashing & verification
 
-**Use GitHub Codespaces**
+### **ZK Circuits**
+- **Circom** or **Halo2** for proof generation
+- **SnarkJS** for proof verification
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### **Frontend** (Integration-ready)
+- React / Next.js (Optional dApp UI)
+- TailwindCSS for styling
 
-## What technologies are used for this project?
+---
 
-This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/bcfcbf06-9c8e-4404-b75f-3b0e94aa6dd4) and click on Share -> Publish.
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
